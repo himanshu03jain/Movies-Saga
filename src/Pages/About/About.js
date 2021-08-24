@@ -30,11 +30,11 @@ function About() {
         <br></br>
         <ul>
             <li>
-                <p>If you are facing any problem in this you can raise an issue on my <a href="https://github.com/himanshu03jain/" style={{color:"white"}}>Github</a></p>
+                <p>If you are facing any problem in this you can raise an issue on my <a href="https://github.com/himanshu03jain/Movies-Saga/" style={{color:"white"}}>Github</a></p>
             </li>
         </ul>
         </div>
-        <p style={{textAlign:"center", positon: "relative", marginTop: "10px"}}>Made with 💓 by Himanshu jain ©️ 2021</p>
+        <p style={{textAlign:"center", positon: "relative", marginTop: "15px"}}>Made with 💓 by Himanshu jain ©️ 2021</p>
         </>
     );
 };
