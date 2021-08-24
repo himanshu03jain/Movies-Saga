@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState} from "react";
+import Header from "./components/Header/Header";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
+import { Container } from "@material-ui/core";
+import Popular from "./Pages/Popular/Popular";
+import Favourite from "./Pages/Favourites/Favourite"
+import Search from "./Pages/Search/Search";
+import About from "./Pages/About/About";
+
+const FavouriteRender = withRouter(Favourite);
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    // const [favMov, setFavMov] = useState([]);
+    const [newfavMov, setNewfavMov] = useState([]);
+    //console.log(newfavMov);
+    return (
+        <BrowserRouter>
+            <Header />
+            <div className="App">
+                <Container>   
+                    <Switch>
+                        <Route
+                            path="/"
+                            render={routeProps => <Popular {...routeProps} setNewfavMov={setNewfavMov}/>}
+                            exact
+                        />
+                        {/* <Route path="/" >
+                        <PopularRender setFavMov={setFavMov} />,
+                        exact
+                    </Route> */}
+                        <Route path="/favourite" >
+                            <FavouriteRender newfavMov={newfavMov}/>
+                        </Route>
+                        <Route
+                            path="/search"
+                            render={routeProps => <Search {...routeProps} setNewfavMov={setNewfavMov}/>}
+                            
+                        />
+                        {/* <Route path="/search" component={Search} setNewfavMov={setNewfavMov}/> */}
+                        <Route path="/about" component={About}/>
+                    </Switch>
+                </Container>
+                <Navbar />
+            </div>
+
+        </BrowserRouter>
+    );
 }
 
 export default App;
