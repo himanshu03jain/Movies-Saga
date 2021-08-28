@@ -4,21 +4,34 @@ import SingleContent from "../components/SingleContent/singleContent";
 import "../Pages/Popular/Popular.css";
 
 function Myfavourites(props) {
-    let ls = props.link;
+    let path = props.link;
     const [content, setContent] = useState([]);
-    console.log(ls);
+    // console.log(props);
+
+    function removeMovie(id, title, poster, release_date, vote_average, vote_count){
+        setContent(prevMov => {
+            return prevMov.filter((mov, index) => {
+                return index !== id;
+            });
+        });
+
+        console.log(content);
+    }
+    
     const fetchFav = async () => {
         const { data } = await axios.get(
-            `https://api.themoviedb.org/3/movie/${ls}?api_key=${process.env.REACT_APP_API_KEY}`
+            `https://api.themoviedb.org/3/movie/${path.id}?api_key=${process.env.REACT_APP_API_KEY}`
         );
 
         //console.log(data);
         setContent(data);
+        console.log(content);
     }
 
     useEffect(() => {
         fetchFav();
     }, []);
+    
     return (
 
         <div >
@@ -30,7 +43,8 @@ function Myfavourites(props) {
                 release_date={content.release_date}
                 vote_average={content.vote_average}
                 vote_count={content.vote_count}
-
+                buttonName="Remove"
+                removeFav={removeMovie}
             />
         </div>
     );

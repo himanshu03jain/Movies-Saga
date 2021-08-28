@@ -14,7 +14,6 @@ const FavouriteRender = withRouter(Favourite);
 
 function App() {
 
-    // const [favMov, setFavMov] = useState([]);
     const [newfavMov, setNewfavMov] = useState([]);
     //console.log(newfavMov);
     return (
@@ -28,19 +27,16 @@ function App() {
                             render={routeProps => <Popular {...routeProps} setNewfavMov={setNewfavMov}/>}
                             exact
                         />
-                        {/* <Route path="/" >
-                        <PopularRender setFavMov={setFavMov} />,
-                        exact
-                    </Route> */}
+
                         <Route path="/favourite" >
-                            <FavouriteRender newfavMov={newfavMov}/>
+                            <FavouriteRender newfavMov={newfavMov} setNewfavMov={setNewfavMov}/>
                         </Route>
                         <Route
                             path="/search"
                             render={routeProps => <Search {...routeProps} setNewfavMov={setNewfavMov}/>}
                             
                         />
-                        {/* <Route path="/search" component={Search} setNewfavMov={setNewfavMov}/> */}
+                        
                         <Route path="/about" component={About}/>
                     </Switch>
                 </Container>

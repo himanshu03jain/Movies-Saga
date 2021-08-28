@@ -2,45 +2,39 @@ import React, {useState} from "react";
 import SingleContent from "../../components/SingleContent/singleContent";
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import CustomPagination from "../../components/Pagination/CustomPagination"
-// import Myfavourites from "../../components/Myfavourite";
 
 toast.configure();
-const Favourite = ({ newfavMov }) => {
+const Favourite = ({ newfavMov, setNewfavMov }) => {
 
-    // const [page, setPage] = useState(1);
-    // const [newArr, setNewArr] = useState([]);
-    let uniq = newfavMov.slice(1);
     let newArr = [];
     let newRemArr = [];
     let uniqObj = {};
-    for(let i in uniq){
-        let objtitle = uniq[i]['title'];
-        uniqObj[objtitle] = uniq[i];
+    for(let i in newfavMov){
+        let objtitle = newfavMov[i]['title'];
+        uniqObj[objtitle] = newfavMov[i];
     }
     for (let i in uniqObj){
         newArr.push(uniqObj[i]);
     }
     
+    //console.log(newArr);
 
     function removeMovie(newMovie, newTitle, newPoster, newRelease_date, newVote_average, newVote_count){
-        // newRemArr(prevMov => {
-        //     return prevMov.filter((mov, index) => {
-        //         return index !== newMovie;
-        //     });
-        // });
+        
         newRemArr = newArr.filter((item) => item.id !== newMovie );
         newArr.splice(0, newArr.length);
         for(let i in newRemArr){
             newArr.push(newRemArr[i]);
         }
+        setNewfavMov(newArr);
         toast.info('Successfully removed from favourites', {
             position: toast.POSITION.BOTTOM_RIGHT,
             autoClose: 1500});
         //console.log(newArr);
     }
-    //console.log(newArr);
+    
     return (
+        
         <div>
             <span className="pageTitle">Your favourite movies</span>
             <div className="trending">
@@ -65,7 +59,15 @@ const Favourite = ({ newfavMov }) => {
 
 export default Favourite;
 
-        // <>
+
+
+
+
+
+
+
+
+        // <div>
         // <span className="pageTitle" >Favourite</span>
         // <div className="trending">
 
@@ -75,4 +77,4 @@ export default Favourite;
         //                 link={mov} />;
         //     })}
         // </div>
-        // </>
+        // </div>

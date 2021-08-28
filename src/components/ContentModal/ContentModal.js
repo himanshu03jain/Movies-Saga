@@ -52,7 +52,7 @@ export default function ContentModal({ children, id }) {
     setContent(data);
     
   }
-  console.log(content);
+  // console.log(content);
 
   const fetchVideo = async () => {
     const {data} = await axios.get(`

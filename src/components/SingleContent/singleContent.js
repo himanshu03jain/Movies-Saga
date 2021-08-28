@@ -29,7 +29,7 @@ function SingleContent({ id, title, poster, release_date, vote_average, vote_cou
     return (
         <div className="joint">
         <ContentModal id={id}>
-        <Badge badgeContent={vote_average} color={"secondary"} />
+        <Badge badgeContent={vote_average } color={"secondary"} />
             <img className="poster" src={poster ? `${img_300}/${poster}` : unavailable} alt={title} />
             <b className="title">{title}</b>
             <span className="subTitle">{release_date}
