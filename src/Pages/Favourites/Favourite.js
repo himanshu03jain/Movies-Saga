@@ -34,12 +34,12 @@ const Favourite = ({ newfavMov, setNewfavMov }) => {
     }
     
     return (
-        
         <div>
             <span className="pageTitle">Your favourite movies</span>
             <div className="trending">
-                {
-                    newArr && newArr.map((c) => <SingleContent
+            { newArr.length ? 
+                (
+                    newArr.map((c) => <SingleContent
                         key={c.id}
                         id={c.id}
                         title={c.title}
@@ -50,7 +50,9 @@ const Favourite = ({ newfavMov, setNewfavMov }) => {
                         buttonName="Remove"
                         removeFav={removeMovie}
                     />)
-                }
+                )
+                : (<p style={{marginTop:"35px"}}>You haven't add any movie, add some movies</p>)
+            }
             </div>
             {/* <CustomPagination setPage={setPage} /> */}
         </div>
