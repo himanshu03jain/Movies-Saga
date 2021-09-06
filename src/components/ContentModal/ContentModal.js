@@ -95,7 +95,7 @@ export default function ContentModal({ children, id }) {
               />
               <img 
                 alt={content.title}
-                className="ContentModal__landscape qwerty"
+                className="ContentModal__landscape"
                 src={content.backdrop_path ? 
                   `${img_500}/${content.backdrop_path}` : 
                     unavailableLandscape} 
