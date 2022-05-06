@@ -22,7 +22,7 @@ function About() {
         <ul>
             <li>If you click on any movie card it shows the full detail of that movie Like:</li>
             <br></br>
-            <p>💠Deccription</p>
+            <p>💠Description</p>
             <p>💠Year</p>
             <p>💠Trailer</p>
             <p>💠Cast</p>
